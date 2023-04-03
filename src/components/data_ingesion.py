@@ -1,6 +1,8 @@
 import os 
 import sys 
+#sys.path.append('../src')
 
+#import unittest 
 #from src.exception import CustomException 
 #from src.logger import logging 
 
@@ -47,7 +49,7 @@ class DataIngesion:
 
 
         except :
-            pass #Exception as e:
+            pass  #Exception as e:
             #raise CustomException(e,sys)
 
 
