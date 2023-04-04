@@ -10,6 +10,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split 
 from dataclasses import dataclass 
 
+from src.components.data_transformation import DataTransformaton 
+from src.components.data_transformation import DataTransformationConfig 
+
 @dataclass
 class DataIngesionConfig:
     train_data_path: str=os.path.join('Artifact',"train.csv")
@@ -55,7 +58,8 @@ class DataIngesion:
 
 if __name__ == "__main__":
     obj = DataIngesion()
-    obj.initiate_data_ingesion()
+    train_data,test_data=obj.initiate_data_ingesion()
 
-
+    data_transformation = DataTransformaton()
+    data_transformation.initiate_data_transformation(train_data,test_data)
 
