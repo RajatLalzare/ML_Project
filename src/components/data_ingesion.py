@@ -13,6 +13,9 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformaton 
 from src.components.data_transformation import DataTransformationConfig 
 
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
+
 @dataclass
 class DataIngesionConfig:
     train_data_path: str=os.path.join('Artifact',"train.csv")
@@ -61,5 +64,9 @@ if __name__ == "__main__":
     train_data,test_data=obj.initiate_data_ingesion()
 
     data_transformation = DataTransformaton()
-    data_transformation.initiate_data_transformation(train_data,test_data)
+    #Saving the two Returns of DAta Transformation 
 
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
+
+    modeltrainer = ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
